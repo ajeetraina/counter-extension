@@ -1,13 +1,13 @@
-package main 
-  
+package main
+
 import "fmt"
 import "io/ioutil"
 import "os"
 import "path/filepath"
 import "strconv"
 import "time"
-  
-func main() { 
+
+func main() {
 	timestamp := strconv.FormatInt(time.Now().UnixMicro(), 10)
 	os.Mkdir("button_pressed", os.FileMode(0522))
 
@@ -15,7 +15,7 @@ func main() {
 	file, _ := os.Create(filepath.Join("button_pressed", timestamp))
 	defer file.Close()
 
-	files,_ := ioutil.ReadDir("button_pressed")
-    numFiles := len(files)
+	files, _ := ioutil.ReadDir("button_pressed")
+	numFiles := len(files)
 	fmt.Println(numFiles)
 }
